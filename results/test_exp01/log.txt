@@ -1,0 +1,30 @@
+2026-02-12 20:31:29,366 [INFO] sar_imaging.pipeline.e2e: === Pipeline start: test_exp01 ===
+2026-02-12 20:31:29,367 [INFO] sar_imaging.pipeline.e2e: Config: seed=42, method=bp
+2026-02-12 20:31:29,369 [INFO] sar_imaging.pipeline.e2e: --- Stage 1: Scene Pre-stage ---
+2026-02-12 20:31:29,369 [INFO] sar_imaging.pipeline.e2e: DEM created: flat, size=(128, 128), spacing=1.0m
+2026-02-12 20:31:29,369 [INFO] sar_imaging.uf.uf22_enu: BP grid from DEM: 128x128 = 16384 pixels
+2026-02-12 20:31:29,370 [INFO] sar_imaging.pipeline.e2e: Added 1 point target(s)
+2026-02-12 20:31:29,370 [INFO] sar_imaging.pipeline.e2e: Scatterers: N=16385, model=centroid
+2026-02-12 20:31:29,373 [INFO] sar_imaging.uf.uf25_power_norm: Power normalization applied: R_ref=7071.1 m, gain range=[0.987, 1.013]
+2026-02-12 20:31:29,373 [INFO] sar_imaging.pipeline.e2e: --- Stage 2: Platform & Raw Generation ---
+2026-02-12 20:31:29,374 [INFO] sar_imaging.scene.platform: Platform trajectory: K=256, altitude=5000 m, velocity=100 m/s, ground_range=5000 m, slant_range=7071 m, aperture=51.0 m
+2026-02-12 20:31:29,374 [INFO] sar_imaging.uf.uf28_raw_echo: Generating raw echo: K=256 pulses, N=16385 scatterers, range_compressed=True
+2026-02-12 20:31:29,453 [INFO] sar_imaging.uf.uf28_raw_echo: Range: R=[7026.0, 7116.3] m, Nr=425, range_res=0.500 m
+2026-02-12 20:31:30,623 [INFO] sar_imaging.uf.uf28_raw_echo: Raw echo generated: shape=(256, 425), energy=5.91e+08
+2026-02-12 20:31:30,624 [INFO] sar_imaging.pipeline.e2e: --- Stage 3: Imaging (BP) ---
+2026-02-12 20:31:30,624 [INFO] sar_imaging.uf.uf27_streaming_bp: BP full: M=16384 pixels, K=256 pulses
+2026-02-12 20:31:30,835 [INFO] sar_imaging.uf.uf27_streaming_bp: BP full completed: 0.21s, 19.9 Mpixel-pulses/s
+2026-02-12 20:31:30,835 [INFO] sar_imaging.pipeline.e2e: BP image: shape=(128, 128), dtype=complex64
+2026-02-12 20:31:30,835 [INFO] sar_imaging.pipeline.e2e: --- Stage 4: Metrics & Product ---
+2026-02-12 20:31:30,835 [INFO] sar_imaging.metrics.uf17_metrics: Metrics: SNR=28.4 dB, DR=78.4 dB
+2026-02-12 20:31:30,835 [INFO] sar_imaging.metrics.uf17_metrics:   PSLR=-49.9 dB, ISLR=-32.3 dB
+2026-02-12 20:31:31,087 [INFO] sar_imaging.pipeline.e2e: --- Stage 5: Visual Verification ---
+2026-02-12 20:31:31,193 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/test_exp01/visual_report/intensity_db.png
+2026-02-12 20:31:31,295 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/test_exp01/visual_report/phase.png
+2026-02-12 20:31:31,397 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/test_exp01/visual_report/histogram.png
+2026-02-12 20:31:31,466 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/test_exp01/visual_report/irf_2d_contour.png
+2026-02-12 20:31:31,537 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/test_exp01/visual_report/range_cut.png
+2026-02-12 20:31:31,610 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/test_exp01/visual_report/azimuth_cut.png
+2026-02-12 20:31:31,610 [INFO] sar_imaging.metrics.uf29_visual: Visual metrics saved: results/test_exp01/visual_report/../visual_metrics.json
+2026-02-12 20:31:31,610 [INFO] sar_imaging.pipeline.e2e: === Pipeline complete: 2.25s ===
+2026-02-12 20:31:31,610 [INFO] sar_imaging.pipeline.e2e: Results: results/test_exp01

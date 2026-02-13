@@ -1,0 +1,44 @@
+2026-02-11 21:22:32,092 [INFO] sar_imaging.pipeline.e2e: === Pipeline start: exp_gangseo_full ===
+2026-02-11 21:22:32,092 [INFO] sar_imaging.pipeline.e2e: Config: seed=42, method=bp
+2026-02-11 21:22:32,094 [INFO] sar_imaging.pipeline.e2e: --- Stage 1: Scene Pre-stage ---
+2026-02-11 21:22:32,150 [INFO] sar_imaging.scene.texture_loader: Georeferenced TIF: 0.2500m/pixel, extent=500.0x500.0m
+2026-02-11 21:22:32,203 [INFO] sar_imaging.scene.texture_loader: Downsampled 4x: 2000x2000 → 500x500, spacing=1.00m
+2026-02-11 21:22:32,203 [INFO] sar_imaging.scene.texture_loader: Texture loaded: 500x500, spacing=1.00m, ENU extent=[-250.0,249.0]x[-250.0,249.0]m
+2026-02-11 21:22:32,272 [INFO] sar_imaging.scene.texture_loader: Pseudo-DEM: 80305/250000 pixels elevated (32.1%), max_h=25.0m
+2026-02-11 21:22:32,275 [INFO] sar_imaging.scene.texture_loader: Texture→RCS: min=0.963, max=6.423, mean=3.277
+2026-02-11 21:22:32,275 [INFO] sar_imaging.pipeline.e2e: Real texture loaded: dataset/gangseo_crop_500m.tif
+2026-02-11 21:22:32,275 [INFO] sar_imaging.pipeline.e2e:   Grid: 500x500, spacing=1.00m
+2026-02-11 21:22:32,275 [INFO] sar_imaging.pipeline.e2e:   ENU x=[-250.0,249.0], y=[-250.0,249.0]
+2026-02-11 21:22:32,275 [INFO] sar_imaging.uf.uf22_enu: BP grid from DEM: 500x500 = 250000 pixels
+2026-02-11 21:22:32,688 [INFO] sar_imaging.pipeline.e2e: Texture RCS applied: rcs range=[0.0000, 40.1256]
+2026-02-11 21:22:32,688 [INFO] sar_imaging.pipeline.e2e: Scatterers: N=498002, model=facet_brdf
+2026-02-11 21:22:33,407 [INFO] sar_imaging.uf.uf20_shadow: Shadow mask: 145807/498002 scatterers shadowed (29.3%)
+2026-02-11 21:22:33,433 [INFO] sar_imaging.uf.uf21_layover: Layover: 20545/498002 scatterers flagged (4.1%)
+2026-02-11 21:22:33,446 [INFO] sar_imaging.uf.uf25_power_norm: Power normalization applied: R_ref=7066.5 m, gain range=[0.948, 1.054]
+2026-02-11 21:22:33,446 [INFO] sar_imaging.pipeline.e2e: --- Stage 2: Platform & Raw Generation ---
+2026-02-11 21:22:33,446 [INFO] sar_imaging.scene.platform: Platform trajectory: K=256, altitude=5000 m, velocity=100 m/s, ground_range=5000 m, slant_range=7071 m, aperture=51.0 m
+2026-02-11 21:22:33,448 [INFO] sar_imaging.uf.uf28_raw_echo: Generating raw echo: K=256 pulses, N=498002 scatterers, range_compressed=True
+2026-02-11 21:22:35,958 [INFO] sar_imaging.uf.uf28_raw_echo: Range: R=[6878.7, 7254.2] m, Nr=1567, range_res=0.500 m
+2026-02-11 21:23:14,909 [INFO] sar_imaging.uf.uf28_raw_echo: Raw echo generated: shape=(256, 1567), energy=2.17e+09
+2026-02-11 21:23:14,909 [INFO] sar_imaging.pipeline.e2e: --- Stage 3: Imaging (BP) ---
+2026-02-11 21:23:14,909 [INFO] sar_imaging.uf.uf27_streaming_bp: BP tiled: 500x500 image, tile=128x128, overlap=16, k_batch=64, total_tiles=25
+2026-02-11 21:23:15,751 [INFO] sar_imaging.uf.uf27_streaming_bp:   Tile 5/25 done (20%, 0.8s)
+2026-02-11 21:23:16,592 [INFO] sar_imaging.uf.uf27_streaming_bp:   Tile 10/25 done (40%, 1.7s)
+2026-02-11 21:23:17,431 [INFO] sar_imaging.uf.uf27_streaming_bp:   Tile 15/25 done (60%, 2.5s)
+2026-02-11 21:23:18,275 [INFO] sar_imaging.uf.uf27_streaming_bp:   Tile 20/25 done (80%, 3.4s)
+2026-02-11 21:23:18,628 [INFO] sar_imaging.uf.uf27_streaming_bp:   Tile 25/25 done (100%, 3.7s)
+2026-02-11 21:23:18,630 [INFO] sar_imaging.uf.uf27_streaming_bp: BP tiled completed: 25 tiles, 3.72s, 17.2 Mpixel-pulses/s
+2026-02-11 21:23:18,630 [INFO] sar_imaging.pipeline.e2e: BP image: shape=(500, 500), dtype=complex64
+2026-02-11 21:23:18,630 [INFO] sar_imaging.pipeline.e2e: --- Stage 4: Metrics & Product ---
+2026-02-11 21:23:18,633 [INFO] sar_imaging.metrics.uf17_metrics: Metrics: SNR=0.8 dB, DR=55.9 dB
+2026-02-11 21:23:19,002 [INFO] sar_imaging.pipeline.e2e: --- Stage 5: Visual Verification ---
+2026-02-11 21:23:19,246 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp_gangseo_full/visual_report/intensity_db.png
+2026-02-11 21:23:19,465 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp_gangseo_full/visual_report/phase.png
+2026-02-11 21:23:19,565 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp_gangseo_full/visual_report/histogram.png
+2026-02-11 21:23:19,868 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp_gangseo_full/visual_report/shadow_overlay.png
+2026-02-11 21:23:20,171 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp_gangseo_full/visual_report/layover_overlay.png
+2026-02-11 21:23:20,934 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp_gangseo_full/visual_report/texture_comparison.png
+2026-02-11 21:23:20,934 [INFO] sar_imaging.metrics.uf29_visual: Generated texture comparison plot for coordinate alignment check
+2026-02-11 21:23:20,934 [INFO] sar_imaging.metrics.uf29_visual: Visual metrics saved: results/exp_gangseo_full/visual_report/../visual_metrics.json
+2026-02-11 21:23:20,934 [INFO] sar_imaging.pipeline.e2e: === Pipeline complete: 48.85s ===
+2026-02-11 21:23:20,934 [INFO] sar_imaging.pipeline.e2e: Results: results/exp_gangseo_full

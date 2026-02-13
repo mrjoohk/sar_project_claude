@@ -1,0 +1,29 @@
+2026-02-11 15:35:34,780 [INFO] sar_imaging.pipeline.e2e: === Pipeline start: exp07_urban ===
+2026-02-11 15:35:34,781 [INFO] sar_imaging.pipeline.e2e: Config: seed=42, method=bp
+2026-02-11 15:35:34,783 [INFO] sar_imaging.pipeline.e2e: --- Stage 1: Scene Pre-stage ---
+2026-02-11 15:35:34,783 [INFO] sar_imaging.pipeline.e2e: DEM created: box, size=(128, 128), spacing=1.0m
+2026-02-11 15:35:34,784 [INFO] sar_imaging.uf.uf22_enu: BP grid from DEM: 128x128 = 16384 pixels
+2026-02-11 15:35:34,808 [INFO] sar_imaging.pipeline.e2e: Scatterers: N=32258, model=facet_brdf
+2026-02-11 15:35:34,849 [INFO] sar_imaging.uf.uf20_shadow: Shadow mask: 2538/32258 scatterers shadowed (7.9%)
+2026-02-11 15:35:34,851 [INFO] sar_imaging.uf.uf21_layover: Layover: 164/32258 scatterers flagged (0.5%)
+2026-02-11 15:35:34,854 [INFO] sar_imaging.uf.uf25_power_norm: Power normalization applied: R_ref=7063.9 m, gain range=[0.989, 1.015]
+2026-02-11 15:35:34,854 [INFO] sar_imaging.pipeline.e2e: --- Stage 2: Platform & Raw Generation ---
+2026-02-11 15:35:34,855 [INFO] sar_imaging.scene.platform: Platform trajectory: K=256, altitude=5000 m, velocity=100 m/s, ground_range=5000 m, slant_range=7071 m, aperture=51.0 m
+2026-02-11 15:35:34,855 [INFO] sar_imaging.uf.uf28_raw_echo: Generating raw echo: K=256 pulses, N=32258 scatterers, range_compressed=True
+2026-02-11 15:35:35,064 [INFO] sar_imaging.uf.uf28_raw_echo: Range: R=[7026.2, 7116.1] m, Nr=423, range_res=0.500 m
+2026-02-11 15:37:07,229 [INFO] sar_imaging.uf.uf28_raw_echo: Raw echo generated: shape=(256, 423), energy=7.30e+06
+2026-02-11 15:37:07,261 [INFO] sar_imaging.pipeline.e2e: --- Stage 3: Imaging (BP) ---
+2026-02-11 15:37:07,262 [INFO] sar_imaging.uf.uf27_streaming_bp: BP full: M=16384 pixels, K=256 pulses
+2026-02-11 15:37:07,470 [INFO] sar_imaging.uf.uf27_streaming_bp: BP full completed: 0.21s, 20.1 Mpixel-pulses/s
+2026-02-11 15:37:07,471 [INFO] sar_imaging.pipeline.e2e: BP image: shape=(128, 128), dtype=complex64
+2026-02-11 15:37:07,471 [INFO] sar_imaging.pipeline.e2e: --- Stage 4: Metrics & Product ---
+2026-02-11 15:37:07,471 [INFO] sar_imaging.metrics.uf17_metrics: Metrics: SNR=25.8 dB, DR=59.0 dB
+2026-02-11 15:37:07,706 [INFO] sar_imaging.pipeline.e2e: --- Stage 5: Visual Verification ---
+2026-02-11 15:37:07,803 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp07_urban/visual_report/intensity_db.png
+2026-02-11 15:37:07,898 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp07_urban/visual_report/phase.png
+2026-02-11 15:37:08,015 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp07_urban/visual_report/histogram.png
+2026-02-11 15:37:08,157 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp07_urban/visual_report/shadow_overlay.png
+2026-02-11 15:37:08,302 [INFO] sar_imaging.metrics.uf29_visual: Saved: results/exp07_urban/visual_report/layover_overlay.png
+2026-02-11 15:37:08,302 [INFO] sar_imaging.metrics.uf29_visual: Visual metrics saved: results/exp07_urban/visual_report/../visual_metrics.json
+2026-02-11 15:37:08,302 [INFO] sar_imaging.pipeline.e2e: === Pipeline complete: 93.53s ===
+2026-02-11 15:37:08,302 [INFO] sar_imaging.pipeline.e2e: Results: results/exp07_urban

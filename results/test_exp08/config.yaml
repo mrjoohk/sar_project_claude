@@ -1,0 +1,67 @@
+bp:
+  enable_streaming: false
+  k_batch: 64
+  overlap: 16
+  stitch_method: linear_blend
+  tile_size:
+  - 128
+  - 128
+  vram_limit_gb: 8.0
+experiment:
+  description: Real urban scene (Gangseo-gu, Seoul) E2E test with texture-based RCS
+  id: EXP-GANGSEO
+geo:
+  enable_unified_enu: true
+imaging:
+  method: bp
+logging:
+  level: INFO
+output:
+  root_dir: results
+  run_id: test_exp08
+platform:
+  altitude_m: 5000.0
+  azimuth_deg: 0.0
+  look_angle_deg: 45.0
+  num_pulses: 128
+  velocity_m_s: 100.0
+radar:
+  bandwidth_hz: 300000000.0
+  fc_hz: 9650000000.0
+  prf_hz: 500.0
+  tp_s: 1.0e-05
+scatter:
+  brdf:
+    alpha: 0.7
+    beta: 0.3
+    p: 10.0
+  enable_adaptive_threshold: false
+  enable_layover: true
+  enable_power_norm: true
+  enable_shadow: true
+  model: facet_brdf
+  multibounce:
+    depth: 1
+scene:
+  build_in_e2e: true
+  building_detection:
+    base_height_m: 0.0
+    building_height_m: 25.0
+    threshold: 0.65
+  grid_spacing_m: 2.0
+  point_targets: []
+  rcs_max: 5.0
+  rcs_min: 0.01
+  synthetic:
+    box_height_m: 30.0
+    box_width_m: 50.0
+    size:
+    - 512
+    - 512
+    spacing_m: 1.0
+    type: flat
+  texture_path: dataset/gangseo_crop_500m.tif
+seed: 42
+visual:
+  enable: true
+  scene_type: urban
